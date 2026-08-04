@@ -106,10 +106,12 @@ window.scrollCarousel = scrollCarousel;
 
   function removeAutoStartListeners() {
     window.removeEventListener("pointerdown", tryAutoStart);
+    window.removeEventListener("touchstart", tryAutoStart);
     window.removeEventListener("keydown", tryAutoStart);
   }
 
   window.addEventListener("pointerdown", tryAutoStart);
+  window.addEventListener("touchstart", tryAutoStart, { passive: true });
   window.addEventListener("keydown", tryAutoStart);
 
   btn.addEventListener("click", (e) => {
