@@ -795,10 +795,22 @@ a {
 }
 
 .site-footer .footer-video {
+  position: relative;
   margin: 2.5rem auto 0;
   width: 9rem;
   aspect-ratio: 1 / 1;
+  border-radius: 50%;
   overflow: hidden;
+}
+.site-footer .footer-video::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: var(--ink);
+  opacity: 0.4;
+  mix-blend-mode: color;
+  pointer-events: none;
 }
 .site-footer .footer-video video {
   width: 100%;
@@ -806,6 +818,4 @@ a {
   object-fit: cover;
   object-position: center bottom;
   display: block;
-  -webkit-mask-image: radial-gradient(ellipse 78% 78% at center, black 50%, transparent 100%);
-  mask-image: radial-gradient(ellipse 78% 78% at center, black 50%, transparent 100%);
 }
