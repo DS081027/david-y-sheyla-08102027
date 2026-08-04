@@ -241,6 +241,7 @@ a {
   margin-bottom: 1.5rem;
   font-size: 1.1rem;
   letter-spacing: 0.3em;
+  color: rgba(248, 244, 236, 0.9);
 }
 
 @media (min-width: 640px) {
