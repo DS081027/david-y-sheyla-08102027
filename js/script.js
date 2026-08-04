@@ -98,21 +98,28 @@ window.scrollCarousel = scrollCarousel;
   }
 
   function tryAutoStart() {
+    // No marcamos autoTried aquí: un touchstart/pointerdown que termina
+    // siendo un scroll no cuenta como gesto válido para el navegador y
+    // audio.play() fallará. Si eso pasa, hay que poder reintentar con el
+    // siguiente toque real (tap, click) en vez de rendirnos para siempre.
     if (autoTried) return;
-    autoTried = true;
-    removeAutoStartListeners();
-    requestPlay();
+    requestPlay().then(() => {
+      if (!audio.paused) {
+        autoTried = true;
+        removeAutoStartListeners();
+      }
+    });
   }
 
   function removeAutoStartListeners() {
-    window.removeEventListener("pointerdown", tryAutoStart);
-    window.removeEventListener("touchstart", tryAutoStart);
-    window.removeEventListener("keydown", tryAutoStart);
+    window.removeEventListener("touchend", tryAutoStart);
+    window.removeEventListener("click", tryAutoStart);
+    window.removeEventListener("keyup", tryAutoStart);
   }
 
-  window.addEventListener("pointerdown", tryAutoStart);
-  window.addEventListener("touchstart", tryAutoStart, { passive: true });
-  window.addEventListener("keydown", tryAutoStart);
+  window.addEventListener("touchend", tryAutoStart, { passive: true });
+  window.addEventListener("click", tryAutoStart);
+  window.addEventListener("keyup", tryAutoStart);
 
   btn.addEventListener("click", (e) => {
     e.stopPropagation();
