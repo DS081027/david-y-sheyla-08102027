@@ -560,11 +560,16 @@ a {
 
 .venue .meta p {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 0.5rem;
   font-size: 1.15rem;
   font-weight: 300;
+  line-height: 1.5;
   margin: 0;
+}
+.venue .meta p .icon {
+  flex-shrink: 0;
+  margin-top: 0.2em;
 }
 
 .icon {
