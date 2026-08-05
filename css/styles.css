@@ -713,25 +713,15 @@ a {
 .photo-album .container {
   position: relative;
 }
-.photo-album .script,
-.photo-album .icon,
-.photo-album .btn-outline {
-  color: var(--ink-contrast);
+.photo-album .final-msg {
+  font-size: 1.4rem;
+  font-weight: 300;
+  line-height: 1.7;
+  color: rgba(248, 244, 236, 0.92);
 }
-.photo-album .lead {
-  color: rgba(248, 244, 236, 0.85);
+.photo-album .final-msg + .final-msg {
+  margin-top: 1.25rem;
 }
-.photo-album .icon {
-  stroke: var(--ink-contrast);
-}
-.photo-album .btn-outline {
-  border-color: var(--ink-contrast);
-}
-.photo-album .btn-outline:hover {
-  background: var(--ink-contrast);
-  color: var(--ink-dark);
-}
-
 /* ---------- Music player ---------- */
 .music-btn {
   position: fixed;
