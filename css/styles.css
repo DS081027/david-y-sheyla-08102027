@@ -745,6 +745,38 @@ a {
   background: var(--primary);
   color: var(--primary-foreground);
 }
+
+.music-hint {
+  position: fixed;
+  bottom: 1.7rem;
+  right: 4.85rem;
+  z-index: 50;
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(248, 244, 236, 0.8);
+  background: rgba(58, 20, 32, 0.5);
+  padding: 0.3rem 0.6rem;
+  border-radius: 999px;
+  backdrop-filter: blur(4px);
+  pointer-events: none;
+  animation: music-hint-fade 2.4s ease-in-out infinite;
+  transition: opacity 0.6s ease;
+}
+.music-hint.is-hidden {
+  opacity: 0;
+  animation: none;
+}
+
+@keyframes music-hint-fade {
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
 .music-btn.playing {
   animation: soft-pulse 2.2s ease-in-out infinite;
 }

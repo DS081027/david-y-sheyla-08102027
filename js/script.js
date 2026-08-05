@@ -64,6 +64,7 @@ window.scrollCarousel = scrollCarousel;
   const btn = document.getElementById("music-btn");
   const iconPlay = document.getElementById("icon-play");
   const iconPause = document.getElementById("icon-pause");
+  const hint = document.getElementById("music-hint");
   if (!audio || !btn) return;
 
   let playAttempt = null;
@@ -74,6 +75,7 @@ window.scrollCarousel = scrollCarousel;
     iconPlay.style.display = isPlaying ? "none" : "block";
     iconPause.style.display = isPlaying ? "block" : "none";
     btn.setAttribute("aria-label", isPlaying ? "Pausar música" : "Reproducir música");
+    if (isPlaying && hint) hint.classList.add("is-hidden");
   }
 
   function requestPlay() {
@@ -124,6 +126,7 @@ window.scrollCarousel = scrollCarousel;
   btn.addEventListener("click", (e) => {
     e.stopPropagation();
     removeAutoStartListeners();
+    if (hint) hint.classList.add("is-hidden");
     if (audio.paused) {
       requestPlay();
     } else {
