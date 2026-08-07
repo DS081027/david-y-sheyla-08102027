@@ -134,3 +134,29 @@ window.scrollCarousel = scrollCarousel;
     }
   });
 })();
+
+// ---------- 5) Sobre de apertura ----------
+(function initEnvelope() {
+  const gate = document.getElementById("envelope-gate");
+  if (!gate) return;
+
+  document.documentElement.classList.add("gate-lock");
+
+  gate.addEventListener("click", () => {
+    if (gate.classList.contains("opened")) return;
+    gate.classList.add("opened");
+
+    const heroVideo = document.getElementById("hero-video");
+    if (heroVideo) {
+      setTimeout(() => {
+        heroVideo.currentTime = 0;
+        heroVideo.play().catch(() => {});
+      }, 500);
+    }
+
+    setTimeout(() => {
+      gate.classList.add("closed");
+      document.documentElement.classList.remove("gate-lock");
+    }, 1100);
+  });
+})();
